@@ -12,11 +12,11 @@ public class FraudCheckService {
 
     private final FraudCheckHistoryRepository fraudCheckHistoryRepository;
 
-    public boolean isFraudulentCustomer(String customerEmail) {
+    public boolean isFraudulentCustomer(String studentEmail) {
 
         fraudCheckHistoryRepository.save(
                 FraudCheckHistory.builder()
-                        .customerEmail(customerEmail)
+                        .studentEmail(studentEmail)
                         .isFraudster(false)
                         .createAt(LocalDateTime.now())
                         .build()

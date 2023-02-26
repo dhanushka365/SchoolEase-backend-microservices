@@ -12,12 +12,12 @@ public class FraudController {
     private final FraudCheckService fraudCheckService;
 
 
-    @GetMapping(path = "{customerEmail}")
+    @GetMapping(path = "{studentEmail}")
     public FraudCheckResponse isFraudster(
-        @PathVariable("customerEmail")  String customerEmail){
-    boolean isFraudulentCustomer = fraudCheckService.isFraudulentCustomer(customerEmail);
-    log.info("fraud check request for customer { }", customerEmail);
-    return new FraudCheckResponse(isFraudulentCustomer);
+        @PathVariable("studentEmail")  String studentEmail){
+    boolean isFraudulentStudent = fraudCheckService.isFraudulentCustomer(studentEmail);
+    log.info("fraud check request for student { }", studentEmail);
+    return new FraudCheckResponse(isFraudulentStudent);
 
     }
 }
