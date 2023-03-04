@@ -1,4 +1,4 @@
 package com.service.student;
 
-public record FraudCheckResponse(boolean isFraudster) {
+public record FraudCheckResponse(Boolean isFraudster) {
 }

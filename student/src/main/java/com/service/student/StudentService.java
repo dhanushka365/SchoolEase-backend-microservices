@@ -33,10 +33,10 @@ public class StudentService {
         if (fraudCheckResponse.isFraudster()){
             throw new IllegalStateException("Fraudster found");
         }
-        else {
-            //todo: store student in db
-            studentRepository.saveAndFlush(student);
-        }
+
+        //todo: store student in db
+        studentRepository.saveAndFlush(student);
+
 
         NotificationRequest notificationRequest = new NotificationRequest(
                 student.getId(),
