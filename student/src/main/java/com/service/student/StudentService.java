@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class StudentService {
@@ -18,8 +20,7 @@ public class StudentService {
                 .build();
         //todo: check if email valid
         //todo: check if email not taken
-        //todo: store student in db
-        studentRepository.saveAndFlush(student);
+
         //todo: check if fraudster
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
                 "http://FRAUD/api/v1/fraud-check/{studentId}",
@@ -30,6 +31,10 @@ public class StudentService {
         if (fraudCheckResponse.isFraudster()){
             throw new IllegalStateException("Fraudster found");
         }
+        else {
+            //todo: store student in db
+            studentRepository.saveAndFlush(student);
+        }
 
         NotificationRequest notificationRequest = new NotificationRequest(
                 student.getId(),
@@ -39,4 +44,16 @@ public class StudentService {
         );
 
     }
+
+    public void deleteStudent(Integer studentId){
+        Optional<Student> optionalStudent = studentRepository.findById(studentId);
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+            studentRepository.delete(student);
+        } else {
+            throw new IllegalArgumentException("Student with ID " + studentId + " does not exist");
+        }
+    }
+
+
 }
