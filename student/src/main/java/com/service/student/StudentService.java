@@ -2,6 +2,8 @@ package com.service.student;
 
 import com.service.clients.notification.NotificationRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -55,5 +57,28 @@ public class StudentService {
         }
     }
 
+
+    public void updateStudent( Integer studentId , StudentUpdateRequest request){
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Student with ID " + studentId + " does not exist"));
+
+        if (request.firstName() != null) {
+            student.setFirstName(request.firstName());
+        }
+
+        if (request.lastName() != null) {
+            student.setLastName(request.lastName());
+        }
+
+        if (request.email() != null) {
+            student.setEmail(request.email());
+        }
+
+        studentRepository.save(student);
+    }
+
+    public Page<Student> getStudents(Pageable pageable) {
+        return studentRepository.findAll(pageable);
+    }
 
 }
