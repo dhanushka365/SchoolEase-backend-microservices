@@ -1,6 +1,7 @@
 package com.service.student;
 
 import com.service.clients.notification.NotificationRequest;
+import com.service.amqp.RabbitMQMessageProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +15,7 @@ import java.util.Optional;
 public class StudentService {
     private final StudentRepository studentRepository;
     private final RestTemplate restTemplate;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
     public void registerStudent(StudentRegistrationRequest request){
         Student student = Student.builder()
                 .firstName(request.firstName())
@@ -22,6 +24,9 @@ public class StudentService {
                 .build();
         //todo: check if email valid
         //todo: check if email not taken
+        //todo: store student in db
+        studentRepository.saveAndFlush(student);
+
 
         //todo: check if fraudster
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
@@ -34,15 +39,17 @@ public class StudentService {
             throw new IllegalStateException("Fraudster found");
         }
 
-        //todo: store student in db
-        studentRepository.saveAndFlush(student);
-
 
         NotificationRequest notificationRequest = new NotificationRequest(
                 student.getId(),
                 student.getEmail(),
                 String.format("Hi %s, welcome to SchoolEase..",
                         student.getFirstName())
+        );
+        rabbitMQMessageProducer.publish(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
         );
 
     }

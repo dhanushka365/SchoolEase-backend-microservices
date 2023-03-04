@@ -1,4 +1,4 @@
-package com.sjpfypgrp7;
+package com.service.notification;
 
 import com.service.clients.notification.NotificationRequest;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.sjpfypgrp7;
+package com.service.notification;
 
 import lombok.*;
 

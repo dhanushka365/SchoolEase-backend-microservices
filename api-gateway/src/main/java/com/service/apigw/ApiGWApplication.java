@@ -1,4 +1,4 @@
-package com.sjpfypgrp7;
+package com.service.apigw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

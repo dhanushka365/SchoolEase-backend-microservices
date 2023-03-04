@@ -10,7 +10,8 @@
 		<module>clients</module>
 		<module>notification</module>
 		<module>api-gateway</module>
-	</modules>
+        <module>amqp</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
