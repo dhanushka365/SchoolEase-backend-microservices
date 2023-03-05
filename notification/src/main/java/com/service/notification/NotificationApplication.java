@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                            "com.service.amqp"
         }
 )
+
 public class NotificationApplication {
     public static void main(String[] args) {
         SpringApplication.run(NotificationApplication.class, args);
