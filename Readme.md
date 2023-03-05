@@ -12,4 +12,21 @@
 4. [x] java -jar notification/target/notification-0.0.1-SNAPSHOT.jar
 5. [x] java -jar api-gateway/target/api-gateway-0.0.1-SNAPSHOT.jar
 6. [x] java -jar amqp/target/amqp-0.0.1-SNAPSHOT.jar
-7. 
+
+mvn clean package -P build-docker-image
+docker compose pull
+docker compose up -d
+docker ps --format=$FORMAT
+
+#Check Docker Logs
+docker logs eureka-server
+docker logs student
+docker logs fraud
+docker logs notification
+
+docker compose stop
+docker compose start
+docker compose down
+
+
+
