@@ -11,6 +11,7 @@
 		<module>notification</module>
 		<module>api-gateway</module>
         <module>amqp</module>
+        <module>teacher</module>
     </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
