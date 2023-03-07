@@ -1,9 +1,11 @@
-package com.sjpfypgrp7.teacher;
+package com.service.teacher;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Data
 @Builder
@@ -13,15 +15,16 @@ import lombok.NoArgsConstructor;
 public class Teacher {
     @Id
     @SequenceGenerator(
-            name = "student_id_sequence",
-            sequenceName = "student_id_sequence"
+            name = "teacher_id_sequence",
+            sequenceName = "teacher_id_sequence"
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_id_sequence"
+            generator = "teacher_id_sequence"
     )
     private Integer id;
     private String firstName;
     private  String lastName;
     private String email;
+    private String department;
 }
