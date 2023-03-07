@@ -66,6 +66,7 @@ services:
     depends_on:
       - zipkin
       - eureka-server
+
   student:
     image: sjpfypgrp7/student:latest
     container_name: student
@@ -108,7 +109,19 @@ services:
       - zipkin
       - postgres
       - rabbitmq
-
+  teacher:
+    image: sjpfypgrp7/teacher:latest
+    container_name: teacher
+    ports:
+      - "8089:8089"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
 networks:
   postgres:
     driver: bridge
