@@ -122,6 +122,21 @@ services:
     depends_on:
       - zipkin
       - postgres
+
+  course:
+    image: sjpfypgrp7/course:latest
+    container_name: course
+    ports:
+      - "8087:8087"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+
 networks:
   postgres:
     driver: bridge
