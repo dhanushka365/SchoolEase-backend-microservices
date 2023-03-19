@@ -13,6 +13,7 @@
         <module>amqp</module>
         <module>teacher</module>
 		<module>course</module>
+		<module>identity-service</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

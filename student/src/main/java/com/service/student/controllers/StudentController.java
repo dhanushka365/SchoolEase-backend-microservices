@@ -1,5 +1,9 @@
-package com.service.student;
+package com.service.student.controllers;
 
+import com.service.student.dto.StudentRegistrationRequest;
+import com.service.student.dto.StudentUpdateRequest;
+import com.service.student.models.Student;
+import com.service.student.service.StudentService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;

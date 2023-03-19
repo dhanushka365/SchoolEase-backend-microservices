@@ -1,4 +1,4 @@
-package com.service.student;
+package com.service.student.dto;
 
 public record StudentRegistrationRequest(
         String firstName,

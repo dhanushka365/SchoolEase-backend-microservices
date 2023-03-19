@@ -1,7 +1,12 @@
-package com.service.student;
+package com.service.student.service;
 
 import com.service.clients.notification.NotificationRequest;
 import com.service.amqp.RabbitMQMessageProducer;
+import com.service.student.security.FraudCheckResponse;
+import com.service.student.dto.StudentRegistrationRequest;
+import com.service.student.dto.StudentUpdateRequest;
+import com.service.student.models.Student;
+import com.service.student.repository.StudentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

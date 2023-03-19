@@ -1,4 +1,4 @@
-package com.service.student;
+package com.service.student.security;
 
 public record FraudCheckResponse(Boolean isFraudster) {
 }
