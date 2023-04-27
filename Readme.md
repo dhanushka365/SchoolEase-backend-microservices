@@ -33,3 +33,4 @@ docker compose down
 
 # k8s commands
 minikube start --memory=4g
+minikube ip
