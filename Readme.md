@@ -36,6 +36,8 @@
 - kubectl apply -f bootstrap/postgres --> [RUN this command inside minikube folder]
 - kubectl describe pod postgres-0 
 - kubectl logs postgres-0
+
+# postgres k8s configuration
 ### SSH in to the databse POD and create all the database inside it
 - kubectl exec -it postgres-0 -- psql -U uduwela 
 - [then type "\l" & press enter]
@@ -44,3 +46,24 @@
 - create database student;
 - create database notification;
 - [then press "CTRL+d"]
+
+# Rabbitmq k8s configuration
+- kubectl apply -f bootstrap/rabbitmq --> [RUN this command inside minikube folder]
+- [password and user name both are "guest"]
+
+# Zipkin k8s configuration
+- kubectl apply -f bootstrap/zipkin --> [RUN this command inside minikube folder]
+
+
+## Get all the resources
+- kubectl get all
+
+- minikube service --url rabbitmq
+
+## Check services are working
+- kubectl get services
+
+## To acess the LOAD BALANCER in minikue
+- minikube tunnel
+- After that we can acess the zipkin using localhost:9411/zpkin/ url also
+- 
