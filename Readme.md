@@ -2,3 +2,8 @@
 ## Please view the work fom below link
 
 https://github.com/dhanushka365/SE-Backend-Microservices
+
+## MID EVALUATION PPT 
+
+[School Management System.pdf](https://github.com/dhanushka365/SchoolEase-backend-microservices/files/12435959/School.Management.System.pdf)
+
